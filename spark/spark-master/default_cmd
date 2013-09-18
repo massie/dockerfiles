@@ -1,0 +1,4 @@
+#!/bin/bash
+IP=$(ip -o -4 addr list eth0 | perl -n -e 'if (m{inet\s([\d\.]+)\/\d+\s}xms) { print $1 }')
+echo "MASTER_IP=$IP"
+/opt/spark-0.7.3/run spark.deploy.master.Master -i $IP

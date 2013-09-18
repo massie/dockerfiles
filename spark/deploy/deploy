@@ -1,0 +1,8 @@
+#!/bin/sh
+
+SPARK_VERSION=0.7.3
+
+MASTER=$(docker run -d zenfractal/spark-master:$SPARK_VERSION)
+sleep 10
+MASTER_IP=$(docker logs $MASTER 2>&1 | egrep '^MASTER_IP=' | awk -F= '{print $2}')
+WORKER=$(docker run -d zenfractal/spark-worker:$SPARK_VERSION spark://$MASTER_IP:7077)
