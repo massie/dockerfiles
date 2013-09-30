@@ -1,4 +1,4 @@
-# Spark
+# Shark master
 FROM shark-base:0.7.0
 MAINTAINER Matt Massie massie@berkeley.edu
 
@@ -7,12 +7,9 @@ VOLUME ["/data"]
 
 # Note: we assume the virtual bridge is used!
 
-RUN cp /etc/hadoop/core-site.xml /opt/hive-0.9.0-bin/conf/core-site.xml
-
 # Add run script
-ADD run_shark_master.sh /opt/
+ADD files /root/shark_master_files
 
 # Add default command for master
-ADD default_cmd /root/
-CMD ["/root/default_cmd"]
+CMD ["/root/shark_master_files/default_cmd"]
 

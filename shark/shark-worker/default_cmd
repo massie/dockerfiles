@@ -1,6 +1,0 @@
-#!/bin/bash
-/opt/configure_shark.sh $1
-sed -i s/MASTER/$1/ /etc/hadoop/core-site.xml
-service hadoop-datanode start
-sleep 5
-sudo -u hdfs /opt/run_shark_worker.sh $2

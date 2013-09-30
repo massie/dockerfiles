@@ -2,7 +2,7 @@
 
 SHARK_VERSION=0.7.0
 
-MASTER=$(docker run -i -t -d shark-master:$SHARK_VERSION)
+MASTER=$(sudo docker run -i -t -d shark-master:$SHARK_VERSION)
 echo "started master container:   $MASTER"
 sleep 60
 MASTER_IP=$(sudo docker logs $MASTER 2>&1 | egrep '^MASTER_IP=' | awk -F= '{print $2}' | tr -d -c "[:digit:] .")

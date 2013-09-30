@@ -1,4 +1,4 @@
-# Spark
+# Shark worker
 FROM shark-base:0.7.0
 MAINTAINER Matt Massie massie@berkeley.edu
 
@@ -11,8 +11,7 @@ ENV SPARK_WORKER_PORT 8888
 #EXPOSE 8888
 
 # Add run script
-ADD run_shark_worker.sh /opt/
+ADD files /root/shark_worker_files
 
 # Add the entrypoint script for the worker
-ADD default_cmd /root/
-ENTRYPOINT ["/root/default_cmd"]
+ENTRYPOINT ["/root/shark_worker_files/default_cmd"]
